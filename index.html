@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="Title">Welcome back!</h1>
+    <div class="Websites">
+        <h2 class="WebsiteTitle">Websites</h2>
+        <div class="links">
+            <div><a href="https://github.com/">Github</a></div>
+            <div><p> </p></div>
+            <div><a href="https://reddit.com/">Reddit</a></div>
+            <div><p> </p></div>
+            <div><a href="https://fmhy.net/">FMHY</a></div>
+            <div><p> </p></div>
+            <div><a href="https://miruro.to/">Anime</a></div>
+            <div><p> </p></div>
+            <div><p> </p></div>
+        </div>
+    </div>
+    <div class="icon2">
+        <img src="/home/qxuep/Pictures/Haruka icon.png">
+    </div>
+    <div class="Time" id="time">--:--</div>
+</body>
+</html>
+<script>
+      const LAT = 35.3733;
+      const LON = -119.0187;
+      const TZ = "America/Edmonton";
+
+      function formatTime(date) {
+        const parts = new Intl.DateTimeFormat("en-US", {
+          timeZone: TZ,
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        }).formatToParts(date);
+
+        const hour = parts.find((p) => p.type === "hour")?.value ?? "--";
+        const minute = parts.find((p) => p.type === "minute")?.value ?? "--";
+        return `${hour}:${minute}`;
+      }
+
+      function updateTime() {
+        document.getElementById("time").textContent = formatTime(new Date());
+      }
+      updateTime();
+      setInterval(updateTime, 1000 * 30);
+</script>
